@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,48 +35,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. diasp.org" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G12-V3-ewU">
-                                <rect key="frame" x="78" y="114" width="257" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="LAL-GL-FJ8"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pod" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXb-gZ-7c3">
-                                <rect key="frame" x="40" y="123.5" width="30" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvd-3T-S08">
-                                <rect key="frame" x="162" y="187" width="50" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="f9R-JE-7Su"/>
-                                    <constraint firstAttribute="width" constant="50" id="s1E-ag-HO3"/>
-                                </constraints>
-                                <state key="normal" title="Go"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6HL-NS-Uqw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PodCell" id="Iyz-0L-4Hw" customClass="PodCell" customModule="Twispora" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iyz-0L-4Hw" id="6Rl-jW-wyQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diasp.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hn-O0-NQf">
+                                                    <rect key="frame" x="35" y="11" width="279" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="SxW-O3-P2j"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8hn-O0-NQf" firstAttribute="top" secondItem="6Rl-jW-wyQ" secondAttribute="topMargin" id="2Vn-lP-eYs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8hn-O0-NQf" secondAttribute="trailing" constant="20" id="WsR-be-uK3"/>
+                                                <constraint firstItem="8hn-O0-NQf" firstAttribute="leading" secondItem="6Rl-jW-wyQ" secondAttribute="leadingMargin" constant="20" id="f3D-sg-lZy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="podLabel" destination="8hn-O0-NQf" id="PfJ-Yz-IoH"/>
+                                            <segue destination="02R-Pa-aYF" kind="show" id="dn9-1S-jnz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <segue destination="02R-Pa-aYF" kind="show" identifier="PodSegue" id="9VP-Re-jrN"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="A7P-jS-70H"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="S9x-o2-XJc"/>
                                 </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wXb-gZ-7c3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="4vz-CX-3GH"/>
-                            <constraint firstItem="G12-V3-ewU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Cnq-wB-v0N"/>
-                            <constraint firstItem="G12-V3-ewU" firstAttribute="leading" secondItem="wXb-gZ-7c3" secondAttribute="trailing" constant="8" id="cOw-8i-oxc"/>
-                            <constraint firstItem="bvd-3T-S08" firstAttribute="top" secondItem="G12-V3-ewU" secondAttribute="bottom" constant="33" id="ga0-HW-mc8"/>
-                            <constraint firstItem="wXb-gZ-7c3" firstAttribute="centerY" secondItem="G12-V3-ewU" secondAttribute="centerY" id="ktV-23-Ghv"/>
-                            <constraint firstItem="bvd-3T-S08" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ouQ-rl-YWy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="G12-V3-ewU" secondAttribute="trailing" constant="40" id="zYv-dV-eNh"/>
+                            <constraint firstItem="6HL-NS-Uqw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="JtZ-BN-BYG"/>
+                            <constraint firstItem="6HL-NS-Uqw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QVI-li-59n"/>
+                            <constraint firstItem="6HL-NS-Uqw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZRL-hf-Xeu"/>
+                            <constraint firstItem="6HL-NS-Uqw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="koA-Cc-M9U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pods" id="QLa-FO-1ah"/>
                     <connections>
-                        <outlet property="podTextField" destination="G12-V3-ewU" id="YbN-Vu-uKo"/>
+                        <outlet property="tableView" destination="6HL-NS-Uqw" id="zT8-yv-7Od"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

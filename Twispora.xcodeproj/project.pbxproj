@@ -17,6 +17,8 @@
 		EDBFD9F120054072006EC8D3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EDBFD9EF20054071006EC8D3 /* LICENSE */; };
 		EDBFD9F220054072006EC8D3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EDBFD9F020054071006EC8D3 /* README.md */; };
 		EDE2721A2005469400594F7B /* PodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE272192005469300594F7B /* PodViewController.swift */; };
+		EDE2721C20056B8C00594F7B /* pods.json in Resources */ = {isa = PBXBuildFile; fileRef = EDE2721B20056B8C00594F7B /* pods.json */; };
+		EDE2721E200574D500594F7B /* PodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE2721D200574D500594F7B /* PodCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		EDBFD9EF20054071006EC8D3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		EDBFD9F020054071006EC8D3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDE272192005469300594F7B /* PodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodViewController.swift; sourceTree = "<group>"; };
+		EDE2721B20056B8C00594F7B /* pods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pods.json; sourceTree = "<group>"; };
+		EDE2721D200574D500594F7B /* PodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +111,9 @@
 			children = (
 				EDBFD9C120053CD1006EC8D3 /* AppDelegate.swift */,
 				EDBFD9C320053CD1006EC8D3 /* PodsViewController.swift */,
+				EDE2721D200574D500594F7B /* PodCell.swift */,
 				EDE272192005469300594F7B /* PodViewController.swift */,
+				EDE2721B20056B8C00594F7B /* pods.json */,
 				EDBFD9C520053CD1006EC8D3 /* Main.storyboard */,
 				EDBFD9C820053CD1006EC8D3 /* Assets.xcassets */,
 				EDBFD9CA20053CD1006EC8D3 /* LaunchScreen.storyboard */,
@@ -246,6 +252,7 @@
 				EDBFD9F220054072006EC8D3 /* README.md in Resources */,
 				EDBFD9F120054072006EC8D3 /* LICENSE in Resources */,
 				EDBFD9C720053CD1006EC8D3 /* Main.storyboard in Resources */,
+				EDE2721C20056B8C00594F7B /* pods.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +280,7 @@
 				EDBFD9C420053CD1006EC8D3 /* PodsViewController.swift in Sources */,
 				EDE2721A2005469400594F7B /* PodViewController.swift in Sources */,
 				EDBFD9C220053CD1006EC8D3 /* AppDelegate.swift in Sources */,
+				EDE2721E200574D500594F7B /* PodCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

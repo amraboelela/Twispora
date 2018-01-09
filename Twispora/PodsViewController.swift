@@ -19,15 +19,18 @@
 
 import UIKit
 
-class PodsViewController: UIViewController {
+class PodsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var podTextField: UITextField!
+    //@IBOutlet weak var podTextField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
     
     let defaultPod = "diasp.org"
-        
+    var pods: [[String:Any]]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,15 +41,55 @@ class PodsViewController: UIViewController {
     //MARK: - Overridden methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PodSegue" {
+        if let podCell = sender as? PodCell {
             if let podVC = segue.destination as? PodViewController {
-                if podTextField.text!.isEmpty {
-                    podVC.pod = defaultPod
-                } else {
-                    podVC.pod = podTextField.text!
+                    podVC.pod = podCell.podLabel.text ?? defaultPod
                 }
+        }
+    }
+    
+    //MARK: - Data handling
+    
+    func loadData() {
+        //let podsData = Data(contentsOf:"pods.json")
+        
+        if let path = Bundle.main.path(forResource: "pods", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
+                    if let filePods = jsonResult["pods"] as? [[String:Any]] {
+                        self.pods = filePods.filter{($0["hidden"] as? String) == "false"}.sorted {
+                            if let domain1 = $0["domain"] as? String, let domain2 = $1["domain"] as? String {
+                                return domain1 < domain2
+                            }
+                            return false
+                        }
+                        print("filePods.count: \(filePods.count)")
+                        print("pods.count: \(pods.count)")
+                    }
+                }
+            } catch {
+                // handle error
+                print("error: \(error)")
             }
         }
+    }
+    
+    //MARK: - Table view
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pods.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let podCell = tableView.dequeueReusableCell(withIdentifier: "PodCell") as! PodCell
+        podCell.podLabel.text = pods[indexPath.row]["domain"] as? String
+        return podCell
     }
     
     //MARK: - Actions
