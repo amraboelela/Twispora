@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EDBFD9C220053CD1006EC8D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBFD9C120053CD1006EC8D3 /* AppDelegate.swift */; };
-		EDBFD9C420053CD1006EC8D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBFD9C320053CD1006EC8D3 /* LoginViewController.swift */; };
+		EDBFD9C420053CD1006EC8D3 /* PodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBFD9C320053CD1006EC8D3 /* PodsViewController.swift */; };
 		EDBFD9C720053CD1006EC8D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDBFD9C520053CD1006EC8D3 /* Main.storyboard */; };
 		EDBFD9C920053CD1006EC8D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDBFD9C820053CD1006EC8D3 /* Assets.xcassets */; };
 		EDBFD9CC20053CD1006EC8D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDBFD9CA20053CD1006EC8D3 /* LaunchScreen.storyboard */; };
@@ -16,6 +16,7 @@
 		EDBFD9E220053CD2006EC8D3 /* TwisporaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBFD9E120053CD2006EC8D3 /* TwisporaUITests.swift */; };
 		EDBFD9F120054072006EC8D3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EDBFD9EF20054071006EC8D3 /* LICENSE */; };
 		EDBFD9F220054072006EC8D3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EDBFD9F020054071006EC8D3 /* README.md */; };
+		EDE2721A2005469400594F7B /* PodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE272192005469300594F7B /* PodViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 /* Begin PBXFileReference section */
 		EDBFD9BE20053CD1006EC8D3 /* Twispora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twispora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBFD9C120053CD1006EC8D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EDBFD9C320053CD1006EC8D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EDBFD9C320053CD1006EC8D3 /* PodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodsViewController.swift; sourceTree = "<group>"; };
 		EDBFD9C620053CD1006EC8D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EDBFD9C820053CD1006EC8D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDBFD9CB20053CD1006EC8D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		EDBFD9E320053CD2006EC8D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDBFD9EF20054071006EC8D3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		EDBFD9F020054071006EC8D3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EDE272192005469300594F7B /* PodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				EDBFD9C120053CD1006EC8D3 /* AppDelegate.swift */,
-				EDBFD9C320053CD1006EC8D3 /* LoginViewController.swift */,
+				EDBFD9C320053CD1006EC8D3 /* PodsViewController.swift */,
+				EDE272192005469300594F7B /* PodViewController.swift */,
 				EDBFD9C520053CD1006EC8D3 /* Main.storyboard */,
 				EDBFD9C820053CD1006EC8D3 /* Assets.xcassets */,
 				EDBFD9CA20053CD1006EC8D3 /* LaunchScreen.storyboard */,
@@ -267,7 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDBFD9C420053CD1006EC8D3 /* LoginViewController.swift in Sources */,
+				EDBFD9C420053CD1006EC8D3 /* PodsViewController.swift in Sources */,
+				EDE2721A2005469400594F7B /* PodViewController.swift in Sources */,
 				EDBFD9C220053CD1006EC8D3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,7 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Twispora/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.twispora.Twispora;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -451,7 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Twispora/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.twispora.Twispora;
 				PRODUCT_NAME = "$(TARGET_NAME)";
