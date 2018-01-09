@@ -19,13 +19,14 @@
 
 import UIKit
 
-class PodsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PodsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
-    //@IBOutlet weak var podTextField: UITextField!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     let defaultPod = "diasp.org"
     var pods: [[String:Any]]!
+    var filteredPods: [[String:Any]]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +52,6 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Data handling
     
     func loadData() {
-        //let podsData = Data(contentsOf:"pods.json")
-        
         if let path = Bundle.main.path(forResource: "pods", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
@@ -65,8 +64,9 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
                             }
                             return false
                         }
+                        filteredPods = pods
                         print("filePods.count: \(filePods.count)")
-                        print("pods.count: \(pods.count)")
+                        print("filteredPods.count: \(pods.count)")
                     }
                 }
             } catch {
@@ -83,13 +83,30 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pods.count
+        return filteredPods.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let podCell = tableView.dequeueReusableCell(withIdentifier: "PodCell") as! PodCell
-        podCell.podLabel.text = pods[indexPath.row]["domain"] as? String
+        podCell.podLabel.text = filteredPods[indexPath.row]["domain"] as? String
         return podCell
+    }
+    
+    //MARK: - Delegates
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("searchText: \(searchText)")
+        if searchText.isEmpty {
+            filteredPods = self.pods
+        } else {
+            filteredPods = pods.filter {
+                if let domain = $0["domain"] as? String {
+                    return domain.range(of: searchText.lowercased()) != nil
+                }
+                return false
+            }
+        }
+        tableView.reloadData()
     }
     
     //MARK: - Actions
@@ -97,7 +114,6 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func unwindToPodsViewController(_ segue: UIStoryboardSegue) {
         print("unwindToPodsViewController")
     }
-    
 
 }
 
