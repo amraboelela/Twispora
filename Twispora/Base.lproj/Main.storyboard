@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -101,39 +100,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Jv-jS-ceM">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="563"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9k-JT-bsC">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="yQm-TA-l8A"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem image="back" id="Js6-vK-h93">
+                                        <connections>
+                                            <action selector="backClicked:" destination="02R-Pa-aYF" id="L7r-ig-FF9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem enabled="NO" id="yh2-Fe-mG0"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="V9k-JT-bsC" firstAttribute="leading" secondItem="YoB-pz-gmx" secondAttribute="leading" id="EVM-kk-TN5"/>
                             <constraint firstItem="9Jv-jS-ceM" firstAttribute="top" secondItem="YoB-pz-gmx" secondAttribute="top" id="IqN-gb-k1o"/>
                             <constraint firstItem="9Jv-jS-ceM" firstAttribute="trailing" secondItem="YoB-pz-gmx" secondAttribute="trailing" id="NLq-er-gko"/>
-                            <constraint firstItem="9Jv-jS-ceM" firstAttribute="bottom" secondItem="YoB-pz-gmx" secondAttribute="bottom" id="NZw-PS-q7t"/>
+                            <constraint firstItem="YoB-pz-gmx" firstAttribute="bottom" secondItem="V9k-JT-bsC" secondAttribute="bottom" id="Z4k-ci-ldV"/>
+                            <constraint firstItem="V9k-JT-bsC" firstAttribute="trailing" secondItem="YoB-pz-gmx" secondAttribute="trailing" id="bwi-Hz-fNo"/>
                             <constraint firstItem="9Jv-jS-ceM" firstAttribute="leading" secondItem="YoB-pz-gmx" secondAttribute="leading" id="rp5-3q-Mki"/>
+                            <constraint firstItem="V9k-JT-bsC" firstAttribute="top" secondItem="9Jv-jS-ceM" secondAttribute="bottom" id="wP5-Ns-BJ7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YoB-pz-gmx"/>
                     </view>
-                    <navigationItem key="navigationItem" title="diasp.org" id="FyT-mx-edX">
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" id="X3P-kp-iZd"/>
-                        <barButtonItem key="rightBarButtonItem" title="Pods" id="q92-LQ-Chv">
-                            <connections>
-                                <segue destination="mhZ-MH-jLc" kind="unwind" unwindAction="unwindToPodsViewController:" id="1nI-L0-ie4"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="diasp.org" id="FyT-mx-edX"/>
                     <connections>
                         <outlet property="webView" destination="9Jv-jS-ceM" id="5or-Eh-Vuv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SYj-e5-3Zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="mhZ-MH-jLc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="480.80000000000001" y="2.2488755622188905"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="270" height="270"/>
+    </resources>
 </document>

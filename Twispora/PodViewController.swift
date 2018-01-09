@@ -46,5 +46,9 @@ class PodViewController: UIViewController, WKNavigationDelegate {
 
     //MARK: - Actions
     
+    @IBAction func backClicked(_ sender: Any) {
+        print("backClicked")
+        webView.goBack()
+    }
 }
 
