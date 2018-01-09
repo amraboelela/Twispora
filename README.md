@@ -1,2 +1,2 @@
 # Twispora
-This is an iOS client for [Diaspora](diasporafoundation.org)
+This is an iOS client for [Diaspora](https://diasporafoundation.org)
