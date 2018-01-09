@@ -57,7 +57,7 @@
                                 </constraints>
                                 <state key="normal" title="Go"/>
                                 <connections>
-                                    <segue destination="02R-Pa-aYF" kind="show" id="9VP-Re-jrN"/>
+                                    <segue destination="02R-Pa-aYF" kind="show" identifier="PodSegue" id="9VP-Re-jrN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -74,12 +74,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pods" id="QLa-FO-1ah"/>
+                    <connections>
+                        <outlet property="podTextField" destination="G12-V3-ewU" id="YbN-Vu-uKo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-212" y="3.1484257871064472"/>
         </scene>
-        <!--Twispora-->
+        <!--diasp.org-->
         <scene sceneID="RQ8-A7-eUy">
             <objects>
                 <viewController id="02R-Pa-aYF" customClass="PodViewController" customModule="Twispora" customModuleProvider="target" sceneMemberID="viewController">
@@ -105,7 +108,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YoB-pz-gmx"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Twispora" id="FyT-mx-edX">
+                    <navigationItem key="navigationItem" title="diasp.org" id="FyT-mx-edX">
                         <barButtonItem key="leftBarButtonItem" enabled="NO" id="X3P-kp-iZd"/>
                         <barButtonItem key="rightBarButtonItem" title="Pods" id="q92-LQ-Chv">
                             <connections>

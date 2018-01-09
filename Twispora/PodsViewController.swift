@@ -21,6 +21,10 @@ import UIKit
 
 class PodsViewController: UIViewController {
 
+    @IBOutlet weak var podTextField: UITextField!
+    
+    let defaultPod = "diasp.org"
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,6 +35,19 @@ class PodsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    //MARK: - Overridden methods
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PodSegue" {
+            if let podVC = segue.destination as? PodViewController {
+                if podTextField.text!.isEmpty {
+                    podVC.pod = defaultPod
+                } else {
+                    podVC.pod = podTextField.text!
+                }
+            }
+        }
+    }
     
     //MARK: - Actions
     

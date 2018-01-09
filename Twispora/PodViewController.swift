@@ -24,13 +24,17 @@ class PodViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
     
+    var pod = "diasp.org"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         webView.navigationDelegate = self
         
-        let url = URL(string: "https://diasp.org")!
+        let url = URL(string: "https://" + pod)!
+        print("url: \(url)")
         webView.load(URLRequest(url: url))
+        self.title = pod
     }
 
     override func didReceiveMemoryWarning() {
