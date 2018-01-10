@@ -23,6 +23,18 @@ class PodCell: UITableViewCell {
     
     @IBOutlet weak var podLabel: UILabel!
 
-
+    var podData: [String: Any]?
+    
+    func updateView() {
+        guard let podData = podData else {
+            print("error: podData is nil")
+            return
+        }
+        podLabel.text = podData["domain"] as? String
+        if (podData["hidden"] as? String) == "false" {
+            podLabel.textColor = UIColor.blue
+        } else {
+            podLabel.textColor = UIColor.gray
+        }
+    }
 }
-

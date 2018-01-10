@@ -38,12 +38,7 @@ class PodViewController: UIViewController, WKNavigationDelegate {
         self.title = pod
         backBarItem.isEnabled = webView.canGoBack
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     //MARK: - Web view
 
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

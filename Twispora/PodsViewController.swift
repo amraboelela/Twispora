@@ -23,10 +23,14 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var showInactivePodsSwitch: UISwitch!
+    @IBOutlet weak var totalValueLabel: UILabel!
+    //@IBOutlet weak var emailTextView: UITextView!
     
     let defaultPod = "diasp.org"
-    var pods: [[String:Any]]!
+    var sortedPods: [[String:Any]]!
     var filteredPods: [[String:Any]]!
+    var tableViewPods: [[String:Any]]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +39,12 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchBar.autocapitalizationType = .none
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //emailTextView.dataDetectorTypes = .all
+        updateData()
     }
-
+    
     //MARK: - Overridden methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,23 +63,42 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                 if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
-                    if let filePods = jsonResult["pods"] as? [[String:Any]] {
-                        self.pods = filePods.filter{($0["hidden"] as? String) == "false"}.sorted {
+                    if let pods = jsonResult["pods"] as? [[String:Any]] {
+                        self.sortedPods = pods.sorted {
                             if let domain1 = $0["domain"] as? String, let domain2 = $1["domain"] as? String {
                                 return domain1 < domain2
                             }
                             return false
                         }
-                        filteredPods = pods
-                        print("filePods.count: \(filePods.count)")
-                        print("filteredPods.count: \(pods.count)")
                     }
                 }
             } catch {
-                // handle error
                 print("error: \(error)")
             }
         }
+    }
+    
+    func updateData() {
+        if self.showInactivePodsSwitch.isOn {
+            self.filteredPods = sortedPods
+        } else {
+            self.filteredPods = sortedPods.filter{($0["hidden"] as? String) == "false"}
+        }
+        let searchText = searchBar.text?.lowercased() ?? ""
+        if searchText.isEmpty {
+            tableViewPods = filteredPods
+        } else {
+            tableViewPods = filteredPods.filter {
+                if let domain = $0["domain"] as? String {
+                    return domain.range(of: searchText.lowercased()) != nil
+                }
+                return false
+            }
+        }
+        totalValueLabel.text = "\(tableViewPods.count)"
+        print("filteredPods.count: \(filteredPods.count)")
+        print("tableViewPods.count: \(tableViewPods.count)")
+        tableView.reloadData()
     }
     
     //MARK: - Table view
@@ -84,33 +108,28 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredPods.count
+        return tableViewPods.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let podCell = tableView.dequeueReusableCell(withIdentifier: "PodCell") as! PodCell
-        podCell.podLabel.text = filteredPods[indexPath.row]["domain"] as? String
+        podCell.podData = tableViewPods[indexPath.row]
+        podCell.updateView()
         return podCell
     }
     
     //MARK: - Delegates
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //print("searchText: \(searchText)")
-        if searchText.isEmpty {
-            filteredPods = self.pods
-        } else {
-            filteredPods = pods.filter {
-                if let domain = $0["domain"] as? String {
-                    return domain.range(of: searchText.lowercased()) != nil
-                }
-                return false
-            }
-        }
-        tableView.reloadData()
+        updateData()
     }
     
     //MARK: - Actions
+    
+    @IBAction func inactivePodsSwitchValueChanged(_ sender: Any) {
+        print("inactivePodsSwitchValueChanged")
+        updateData()
+    }
     
     @IBAction func unwindToPodsViewController(_ segue: UIStoryboardSegue) {
         print("unwindToPodsViewController")
