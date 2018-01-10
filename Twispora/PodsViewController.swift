@@ -32,6 +32,7 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         loadData()
+        searchBar.autocapitalizationType = .none
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,7 +96,7 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Delegates
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("searchText: \(searchText)")
+        //print("searchText: \(searchText)")
         if searchText.isEmpty {
             filteredPods = self.pods
         } else {
