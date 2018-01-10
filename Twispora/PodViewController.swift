@@ -23,6 +23,7 @@ import WebKit
 class PodViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var backBarItem: UIBarButtonItem!
     
     var pod = "diasp.org"
     
@@ -35,6 +36,7 @@ class PodViewController: UIViewController, WKNavigationDelegate {
         print("url: \(url)")
         webView.load(URLRequest(url: url))
         self.title = pod
+        backBarItem.isEnabled = webView.canGoBack
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,11 +46,27 @@ class PodViewController: UIViewController, WKNavigationDelegate {
 
     //MARK: - Web view
 
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        backBarItem.isEnabled = webView.canGoBack
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("webView didFinish")
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        backBarItem.isEnabled = webView.canGoBack
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print("webView didFail")
+    }
+    
     //MARK: - Actions
     
     @IBAction func backClicked(_ sender: Any) {
         print("backClicked")
         webView.goBack()
+        backBarItem.isEnabled = webView.canGoBack
     }
 }
 

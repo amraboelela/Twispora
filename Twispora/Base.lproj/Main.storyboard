@@ -122,7 +122,7 @@
                                     <constraint firstAttribute="height" constant="40" id="yQm-TA-l8A"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem image="back" id="Js6-vK-h93">
+                                    <barButtonItem enabled="NO" image="back" id="Js6-vK-h93">
                                         <connections>
                                             <action selector="backClicked:" destination="02R-Pa-aYF" id="L7r-ig-FF9"/>
                                         </connections>
@@ -145,6 +145,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="diasp.org" id="FyT-mx-edX"/>
                     <connections>
+                        <outlet property="backBarItem" destination="Js6-vK-h93" id="hZG-WC-85k"/>
                         <outlet property="webView" destination="9Jv-jS-ceM" id="5or-Eh-Vuv"/>
                     </connections>
                 </viewController>
