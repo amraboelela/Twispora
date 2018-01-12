@@ -25,6 +25,7 @@ class PodInfoViewController: UIViewController {
     @IBOutlet weak var uptimeLabel: UILabel!
     @IBOutlet weak var scoreValueLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var localPostsLabel: UILabel!
     @IBOutlet weak var dateCreatedLabel: UILabel!
     
     var podData: [String: Any]!
@@ -44,7 +45,13 @@ class PodInfoViewController: UIViewController {
         if let uptime = podData["uptimelast7"] as? String {
             uptimeLabel.text = "\(uptime) %"
         }
-        dateCreatedLabel.text = podData["datecreated"] as? String
+        localPostsLabel.text = podData["local_posts"] as? String
+        if let dateCreatedString = podData["datecreated"] as? String {
+            let dateCompontents = dateCreatedString.components(separatedBy: " ")
+            if dateCompontents.count > 0 {
+                dateCreatedLabel.text = dateCompontents[0]
+            }
+        }
     }
     
     //MARK: - Actions

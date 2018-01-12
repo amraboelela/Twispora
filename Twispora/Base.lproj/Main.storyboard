@@ -315,7 +315,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSb-qn-ecT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Local posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSb-qn-ecT">
                                 <rect key="frame" x="40" y="236" width="100" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Hcj-Lr-EXl"/>
@@ -326,8 +326,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvU-re-YxR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvU-re-YxR">
                                 <rect key="frame" x="150" y="236" width="185" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvq-VM-OI3">
+                                <rect key="frame" x="40" y="269" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="21" id="LSd-1e-sNN"/>
+                                    <constraint firstAttribute="width" constant="100" id="NgN-dx-m7F"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="gNt-ui-spu"/>
+                                    <constraint firstAttribute="height" constant="21" id="oX1-9F-gu4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-11-10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJX-27-3Wa">
+                                <rect key="frame" x="150" y="269" width="185" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -335,15 +353,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="jvq-VM-OI3" firstAttribute="leading" secondItem="BVG-QQ-gWY" secondAttribute="leading" constant="40" id="5zE-9X-XMu"/>
                             <constraint firstItem="1cY-5Z-5EQ" firstAttribute="leading" secondItem="BVG-QQ-gWY" secondAttribute="leading" constant="40" id="87R-rc-NMo"/>
                             <constraint firstItem="M3W-z8-0Fk" firstAttribute="centerY" secondItem="EbW-sf-pHW" secondAttribute="centerY" id="8ZY-jL-zLi"/>
                             <constraint firstAttribute="trailing" secondItem="dvU-re-YxR" secondAttribute="trailing" constant="40" id="Aeg-Xy-uIj"/>
                             <constraint firstItem="rdf-zz-eza" firstAttribute="leading" secondItem="0zn-OW-HXl" secondAttribute="trailing" constant="10" id="DLa-e5-BxP"/>
                             <constraint firstItem="gSb-qn-ecT" firstAttribute="leading" secondItem="BVG-QQ-gWY" secondAttribute="leading" constant="40" id="Dec-Le-IA9"/>
                             <constraint firstItem="dvU-re-YxR" firstAttribute="centerY" secondItem="gSb-qn-ecT" secondAttribute="centerY" id="FZh-3R-Z4b"/>
+                            <constraint firstItem="wJX-27-3Wa" firstAttribute="centerY" secondItem="jvq-VM-OI3" secondAttribute="centerY" id="G1Z-pK-Jl4"/>
                             <constraint firstItem="M3W-z8-0Fk" firstAttribute="leading" secondItem="EbW-sf-pHW" secondAttribute="trailing" constant="10" id="Gi7-tW-OaC"/>
                             <constraint firstItem="zu1-gf-3os" firstAttribute="centerY" secondItem="1cY-5Z-5EQ" secondAttribute="centerY" id="Kjb-Yf-43y"/>
+                            <constraint firstItem="BVG-QQ-gWY" firstAttribute="trailing" secondItem="wJX-27-3Wa" secondAttribute="trailing" constant="40" id="L1g-9P-uHu"/>
                             <constraint firstItem="rdf-zz-eza" firstAttribute="centerY" secondItem="0zn-OW-HXl" secondAttribute="centerY" id="Lpu-X6-e56"/>
+                            <constraint firstItem="jvq-VM-OI3" firstAttribute="top" secondItem="gSb-qn-ecT" secondAttribute="bottom" constant="12" id="MBz-uf-v9C"/>
                             <constraint firstItem="0zn-OW-HXl" firstAttribute="leading" secondItem="BVG-QQ-gWY" secondAttribute="leading" constant="40" id="NMY-Pe-0y2"/>
                             <constraint firstItem="gSb-qn-ecT" firstAttribute="top" secondItem="EbW-sf-pHW" secondAttribute="bottom" constant="12" id="NkB-Sk-GcI"/>
                             <constraint firstItem="zu1-gf-3os" firstAttribute="leading" secondItem="1cY-5Z-5EQ" secondAttribute="trailing" constant="10" id="OVD-0m-YYs"/>
@@ -360,6 +382,7 @@
                             <constraint firstItem="BVG-QQ-gWY" firstAttribute="trailing" secondItem="tN7-u9-VqF" secondAttribute="trailing" constant="40" id="tcF-VT-GJ5"/>
                             <constraint firstItem="0zn-OW-HXl" firstAttribute="top" secondItem="1cY-5Z-5EQ" secondAttribute="bottom" constant="12" id="v6C-BJ-3aA"/>
                             <constraint firstItem="d1q-Kt-wEO" firstAttribute="leading" secondItem="BVG-QQ-gWY" secondAttribute="leading" constant="40" id="vcE-hj-j9d"/>
+                            <constraint firstItem="wJX-27-3Wa" firstAttribute="leading" secondItem="jvq-VM-OI3" secondAttribute="trailing" constant="10" id="zaf-7b-HcC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BVG-QQ-gWY"/>
                     </view>
@@ -373,7 +396,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="cityLabel" destination="M3W-z8-0Fk" id="33U-k9-AFN"/>
-                        <outlet property="dateCreatedLabel" destination="dvU-re-YxR" id="CAX-RX-vka"/>
+                        <outlet property="dateCreatedLabel" destination="wJX-27-3Wa" id="hCx-mV-Fwp"/>
+                        <outlet property="localPostsLabel" destination="dvU-re-YxR" id="3nC-7d-ZHd"/>
                         <outlet property="scoreValueLabel" destination="rdf-zz-eza" id="t1J-Pb-sK9"/>
                         <outlet property="statusValueLabel" destination="tN7-u9-VqF" id="Qbg-Ay-oGc"/>
                         <outlet property="uptimeLabel" destination="zu1-gf-3os" id="bzj-lM-ZIk"/>
