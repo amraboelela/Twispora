@@ -19,29 +19,29 @@
 
 import UIKit
 
-class PodsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class PodsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIViewControllerPreviewingDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var showInactivePodsSwitch: UISwitch!
     @IBOutlet weak var totalValueLabel: UILabel!
-    //@IBOutlet weak var emailTextView: UITextView!
     
     let defaultPod = "diasp.org"
     var sortedPods: [[String:Any]]!
     var filteredPods: [[String:Any]]!
     var tableViewPods: [[String:Any]]!
+    //var selectedPodData: [String: Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         loadData()
         searchBar.autocapitalizationType = .none
+        registerForPreviewing(with: self, sourceView: tableView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //emailTextView.dataDetectorTypes = .all
         updateData()
     }
     
@@ -50,8 +50,8 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let podCell = sender as? PodCell {
             if let podVC = segue.destination as? PodViewController {
-                    podVC.pod = podCell.podLabel.text ?? defaultPod
-                }
+                podVC.pod = podCell.podLabel.text ?? defaultPod
+            }
         }
     }
     
@@ -124,6 +124,23 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
         updateData()
     }
     
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        print("previewingContext viewControllerForLocation")
+        
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "PodInfoViewController") as! PodInfoViewController
+            vc.podData = tableViewPods[indexPath.row]
+            return vc
+        }
+        return nil
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        print("previewingContext commitViewController")
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+    
     //MARK: - Actions
     
     @IBAction func inactivePodsSwitchValueChanged(_ sender: Any) {
@@ -134,6 +151,4 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func unwindToPodsViewController(_ segue: UIStoryboardSegue) {
         print("unwindToPodsViewController")
     }
-
 }
-
