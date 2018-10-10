@@ -30,7 +30,6 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
     var sortedPods: [[String:Any]]!
     var filteredPods: [[String:Any]]!
     var tableViewPods: [[String:Any]]!
-    //var selectedPodData: [String: Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +81,7 @@ class PodsViewController: UIViewController, UITableViewDelegate, UITableViewData
         if self.showInactivePodsSwitch.isOn {
             self.filteredPods = sortedPods
         } else {
-            self.filteredPods = sortedPods.filter{($0["hidden"] as? String) == "false"}
+            self.filteredPods = sortedPods.filter{($0["status"] as? String) != "4"}
         }
         let searchText = searchBar.text?.lowercased() ?? ""
         if searchText.isEmpty {

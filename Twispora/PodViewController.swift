@@ -39,7 +39,7 @@ class PodViewController: UIViewController, WKNavigationDelegate {
         backBarItem.isEnabled = webView.canGoBack
     }
     
-    //MARK: - Web view
+    // MARK: - Web view
 
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -56,7 +56,7 @@ class PodViewController: UIViewController, WKNavigationDelegate {
         print("webView didFail")
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func backClicked(_ sender: Any) {
         print("backClicked")

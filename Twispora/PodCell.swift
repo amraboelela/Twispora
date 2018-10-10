@@ -31,10 +31,10 @@ class PodCell: UITableViewCell {
             return
         }
         podLabel.text = podData["domain"] as? String
-        if (podData["hidden"] as? String) == "false" {
-            podLabel.textColor = UIColor.blue
-        } else {
+        if (podData["status"] as? String) == "4" {
             podLabel.textColor = UIColor.gray
+        } else {
+            podLabel.textColor = UIColor.blue
         }
     }
 }
